@@ -1,0 +1,22 @@
+README.md
+
+# Output di compilazione
+*.o
+
+# Cartelle e tool di analisi
+.scannerwork/
+sonar-scanner/
+bw-output/
+build-wrapper-linux-x86/
+build-wrapper-linux-x86.zip
+sonar-scanner-cli-*.zip
+
+# File generati da cccc
+**/.cccc/
+
+# Appunti personali o di debug
+how_to_open_cccc_on_line_from_bash.txt
+subject_n_other/
+
+# Backup temporanei
+*~
