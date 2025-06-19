@@ -2,6 +2,8 @@ README.md
 
 # Output di compilazione
 *.o
+*.csv
+expense_tracker
 
 # Cartelle e tool di analisi
 .scannerwork/

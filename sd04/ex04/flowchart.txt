@@ -1,0 +1,20 @@
+Start
+  ↓
+Load file → [Errore? → Exit]
+  ↓
+Menu:
+[1] List all
+[2] Filter
+[3] Add
+[4] Edit
+[5] Delete
+[6] Summary
+[7] Save & Exit
+  ↓
+Aggiorna struttura dati
+  ↓
+Loop fino a Save & Exit
+  ↓
+Scrivi file
+  ↓
+Fine

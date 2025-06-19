@@ -1,0 +1,53 @@
+Project: ex00 – Expense Tracker
+
+Descrizione:
+------------
+Questo programma legge un file CSV contenente un elenco di spese
+personali e stampa l'elenco formattato, seguito dal totale complessivo.
+
+Formato atteso del CSV (una riga per spesa):
+<date>,<category>,<amount>,<description>
+Esempio:
+2025-06-01,Food,12.50,Pizza with friends
+
+Funzionalità:
+-------------
+- Parsing del file CSV riga per riga (con get_next_line).
+- Conversione dei campi in una lista collegata di strutture `t_expense`.
+- Stampa formattata di tutte le spese.
+- Calcolo e stampa del totale.
+- Pulizia completa della memoria.
+
+File presenti:
+--------------
+- expense.h     → definizione della struttura dati e prototipi pubblici
+- expense.c     → funzioni principali: caricamento, stampa, somma, free
+- utils.c       → funzioni ausiliarie: split stringhe, strdup, atof
+- main.c        → entry point del programma
+- get_next_line.c/h → implementazione locale per lettura riga per riga (inclusa)
+- Makefile      → compila tutto in un eseguibile chiamato `expense_tracker`
+
+Compilazione:
+-------------
+make
+
+Esecuzione:
+-----------
+./expense_tracker file.csv
+
+Esempio:
+./expense_tracker test.csv
+
+Funzioni usate:
+---------------
+- malloc, free
+- open, read, close
+- printf (o ft_printf equivalente)
+- tutte le funzioni scritte da me (nessuna libreria esterna)
+
+Note:
+-----
+Non è stata utilizzata Libft. Tutte le funzioni ausiliarie sono incluse in utils.c.
+Il parsing del CSV è minimale e non gestisce valori contenenti virgole nei campi.
+
+Autore: <tuo_nome>

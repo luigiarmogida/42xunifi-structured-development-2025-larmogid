@@ -1,0 +1,44 @@
+Data Flow Diagram:
+
+
+[Input file] ──▶ [Parser] ──▶ [Lista Record Validi]
+                            ├──▶ [Filtro]
+                            │     └──▶ [Records Filtrati]
+                            └──▶ [Summary] ──▶ [Output]
+
+
+
+                            +----------------+
+                            |   main.c       |
+                            +----------------+
+                                    |
+                                    v
+                            +------------------------+
+                            | load_expenses()       |
+                            | parse_line()          |
+                            | is_valid_date()       |
+                            | is_valid_amount()     |
+                            +------------------------+
+                                    |
+                                    v
+                            +-----------------------------+
+                            | Ask user for filter choice |
+                            +-----------------------------+
+                                    |
+                                    v
+                            +------------------------------+
+                            | Apply filter (category/date)|
+                            | filter_by_*()               |
+                            +------------------------------+
+                                    |
+                                    v
+                            +----------------------------+
+                            | compute_summary()         |
+                            | compute_category_breakdown|
+                            +----------------------------+
+                                    |
+                                    v
+                            +-------------------+
+                            | print_summary()   |
+                            +-------------------+
+

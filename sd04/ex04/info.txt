@@ -1,0 +1,40 @@
+Requisiti Estratti (in elenco puntato)
+
+Obblighi funzionali:
+
+* Caricare un file CSV di spese.
+
+* Riconoscere righe:
+
+Vecchio formato: 4 campi (data, importo, categoria, descrizione).
+
+Nuovo formato: 5 campi (ID, data, importo, categoria, descrizione).
+
+* Validare i dati: righe con errori vanno scartate con avviso.
+
+* Generare ID univoci per le nuove spese (basati sul massimo ID esistente).
+
+* Memorizzare in memoria fino a ~1000 record.
+
+Interfaccia utente (interattiva):
+
+* Menu di azioni:
+
+* Lista spese ordinate per ID crescente.
+
+* Filtri: per sottostringa categoria o intervallo di date.
+
+* Aggiunta di nuove spese (con validazione).
+
+* Modifica spesa esistente (con possibilità di annullare).
+
+* Cancellazione con conferma.
+
+* Riepilogo: numero totale, somma, media, breakdown per categoria.
+
+* Ogni input va validato con ripetizione in caso di errore.
+
+Persistenza:
+
+* Alla fine, scrivere su file originale tutte le spese in formato a 5 campi.
+

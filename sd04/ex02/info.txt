@@ -1,0 +1,75 @@
+ Requisiti funzionali riformulati
+Caricamento dati:
+Caricare il file CSV passato da terminale come argomento.
+
+Gestire errori in apertura (es. file mancante).
+
+Leggere il file riga per riga.
+
+Pulire gli spazi bianchi intorno ai campi.
+
+Validare ogni riga:
+
+ID: intero positivo, univoco.
+
+Name, City: non vuoti dopo trim.
+
+Phone: solo cifre e simboli +, -, (, ), con almeno una cifra.
+
+Email: un solo @, parti locale e dominio non vuote, dominio con almeno un ..
+
+Address: può essere vuoto.
+
+Ignorare e segnalare righe malformate.
+
+Salvare i contatti validi in memoria.
+
+Funzionalità del menu:
+Elenca tutti i contatti
+
+Ricerca per nome (sottostringa)
+
+Ricerca per città (sottostringa)
+
+Aggiungi nuovo contatto
+
+Modifica un contatto esistente (ID)
+
+Elimina un contatto (ID)
+
+Salva e esci
+
+Salvataggio:
+Scrivere su file temporaneo e rinominare.
+
+Segnalare eventuali errori di scrittura.
+
+Salvare solo i contatti validi attualmente in memoria.
+
+UX:
+Prompt che si ripetono se l’input è invalido.
+
+Il menu viene sempre mostrato dopo ogni operazione, tranne in caso di uscita.
+
+
+
+Diagramma dei moduli:
+
+main
+ ├── parse_args
+ ├── load_contacts
+ │    └── validate_contact_line
+ │         ├── validate_id
+ │         ├── validate_name_city
+ │         ├── validate_phone
+ │         └── validate_email
+ ├── menu_loop
+ │    ├── list_contacts
+ │    ├── search_by_name
+ │    ├── search_by_city
+ │    ├── add_contact
+ │    ├── update_contact
+ │    ├── delete_contact
+ │    └── save_and_exit
+ │         └── save_contacts
+ └── free_contacts

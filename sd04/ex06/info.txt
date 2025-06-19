@@ -1,0 +1,177 @@
+✅ 1. Requisiti Principali (rephrase in bullet list)
+💾 Input File Support
+Carica il vecchio formato (film singolo con una visione)
+
+Riconosce nuovo formato:
+
+"Movie" | "TV" | "Anime" come tipo
+
+Campi: ID, titolo, genere, storico visioni
+
+Visioni:
+
+Movie → solo data YYYY-MM-DD
+
+TV/Anime → Stagione-Episodio:Data (es: 2-5:2024-06-17)
+
+🛠️ Parsing & Validazione
+Skippa con warning:
+
+ID invalidi
+
+Titoli/Generi vuoti
+
+Date malformate
+
+Rating non tra 1-10
+
+Season/Episode non positivi
+
+Storia malformata
+
+Nessun arresto su errore: continua
+
+🧠 In Memoria
+Struttura unica con ID univoci (anche assegnati)
+
+Ordinamento automatico
+
+Fino a ~1000 elementi
+
+🖥️ Interfaccia Console
+Menu per:
+
+📽️ Movies
+
+📺 TV Shows
+
+🎌 Anime
+
+Operazioni comuni:
+
+Lista tutti
+
+Aggiungi titolo (storia vuota)
+
+Aggiungi visione
+
+Mostra storico
+
+Modifica titolo/genere
+
+Elimina (con conferma)
+
+Statistiche (numero, rating medio, breakdown per genere)
+
+🔍 Ricerca globale (per sottostringa in titolo o genere)
+
+💾 Salvataggio
+Sovrascrive stesso file con nuovo formato
+
+Linee vuote scritte vuote
+
+🧱 2. Data Structures (header file sketch)
+c
+Copy
+Edit
+// watchlist.h
+#ifndef WATCHLIST_H
+#define WATCHLIST_H
+
+typedef enum {
+    MEDIA_MOVIE,
+    MEDIA_TV,
+    MEDIA_ANIME
+} MediaType;
+
+typedef struct s_viewing {
+    int season;      // solo per TV/Anime
+    int episode;     // solo per TV/Anime
+    char *date;      // "YYYY-MM-DD"
+    int rating;      // 1..10
+    struct s_viewing *next;
+} Viewing;
+
+typedef struct s_media {
+    int id;
+    MediaType type;
+    char *title;
+    char *genre;
+    Viewing *history;
+    struct s_media *next;
+} MediaItem;
+
+typedef struct {
+    MediaItem *head;
+    int count;
+} MediaList;
+
+#endif
+🧠 3. Funzionalità previste (prototipi principali)
+c
+Copy
+Edit
+// parse.h
+int load_watchlist(MediaList *list, const char *filename);
+int save_watchlist(const MediaList *list, const char *filename);
+
+// media_ops.h
+int add_media_item(MediaList *list, MediaType type, const char *title, const char *genre);
+int delete_media_item(MediaList *list, int id);
+MediaItem *find_media_by_id(MediaList *list, int id);
+
+// history_ops.h
+int add_viewing(MediaItem *item, const char *date, int rating, int season, int episode);
+void print_history(const MediaItem *item);
+float compute_average_rating(const MediaItem *item);
+
+// stats.h
+void print_statistics(const MediaList *list);
+void search_by_substring(const MediaList *list, const char *substr);
+
+// utils.h
+int validate_date(const char *date);
+int validate_rating(int rating);
+int validate_season_episode(int s, int e);
+void trim_whitespace(char *str);
+
+🔄 4. Flusso d'esecuzione (semplificato)
+plaintext
+Copy
+Edit
+          +-------------------+
+          |    Avvio App      |
+          +-------------------+
+                   |
+          +-------------------+
+          |  Carica File CSV  |
+          +-------------------+
+                   |
+          +-------------------+
+          |    Parsing Linee   |
+          +-------------------+
+                   |
+          +-------------------+
+          |  Inserisci in lista|
+          +-------------------+
+                   |
+          +-------------------+
+          | Loop Interattivo  |
+          |   Menu per tipo   |
+          +-------------------+
+                   |
+          |  Operazioni CRUD, |
+          |   Statistiche,    |
+          |     Ricerca       |
+                   |
+          +-------------------+
+          |   Salva & Esci    |
+          +-------------------+
+🔍 5. Idee per Schemi Visivi
+Structure Chart: funzioni per modulo (parse, ops, UI)
+
+Entity-Relationship semplificato: MediaItem ↔ Viewing
+
+Diagramma a blocchi per i menu e flusso interattivo
+
+Mockup console UI (per spiegare le scelte)

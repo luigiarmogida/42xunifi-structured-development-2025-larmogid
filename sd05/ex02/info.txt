@@ -1,0 +1,33 @@
+Pianificazione delle date di esami alla scuola di Ingegneria: un esercizio di progettazione e programmazione strutturata
+
+Nell’organizzazione dell’offerta didattica della scuola di Ingegneria, ciascun docente deve pianificare in anticipo le 
+date degli esami nel corso dell’anno.
+
+La pianificazione è soggetta ad alcuni vincoli:
+- devono essere pianificate (almeno) 7 date nel corso dell’anno...
+- ...e collocate entro periodi destinati agli esami (durante i quali non ci sono lezioni)...
+- ...e distanziate almeno 14 giorni l’una dall’altra.
+- E' opportuno che siano pianificate mitigando la sovrapposizione con le date fissate per esami di insegnamenti condivisi 
+dagli stessi studenti (e.g. ingegneria del sw e basi di dati sono entrambi al III anno per ingegneria informatica)...dove 
+la sovrapposizione si intende essere mitigata quando le date sono distanziate di almeno 3-5 giorni.
+
+Se lo svolgimento dell’esame richiede un’aula, interviene un ulteriore vincolo:
+- la data per svolgere l’esame può essere fissata solo in giorni in cui esiste un’aula che sia libera e abbia capienza 
+adeguata al numero atteso di candidati,
+- dove il numero atteso dipende dalla numerosità dei corsi di laurea su cui insiste l’insegnamento...che si assume possa 
+essere determinata in modo automatico a partire dall’insegnamento
+
+Possiamo immaginarci che all’interfaccia il caso d’uso proceda come segue:
+- una volta autenticato, il docente ha visione degli insegnamenti per cui deve fissare le date di esame (un docente 
+normalmente ha più insegnamenti)...
+- ...e per ciascuno sono indicate il numero di date ancora da pianificare…
+- ...e dei giorni in cui ci sono aule disponibili...
+- ...e del grado di interferenza con date di altri esami rilevanti per gli stessi studenti.
+- Il docente ripetutamente seleziona date per ciascun insegnamento...
+- ...e per ogni selezione riceve una indicazione se le date non sono ancora almeno 7 oppure non sono distanziate di 
+almeno 14 giorni…
+- ...e riceve anche indicazione della qualità di ciascuna data rispetto alla sovrapposizione con altri esami di 
+interesse per gli stessi studenti o per sottodimensionamento dell’aula o per la criticità nell’ocupazione delle aule...
+- ... e la ripetizione continua fino a quando i vincoli necessari sono soddisfatti e il docente decide di consolidarle, 
+oppure quando il docente decide di salvare come soluzione intermedia (anche imperfetta).
+- Le date sono salvate e trasmesse alla Scuola, e al docente come promemoria, con istruzione su come modificarle.

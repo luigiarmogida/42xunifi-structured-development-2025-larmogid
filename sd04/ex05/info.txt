@@ -1,0 +1,51 @@
+✅ REQUIREMENTS ANALYSIS
+📌 Requisiti Funzionali (FR)
+Supporto CRUD: mantenere Create, Read, Update, Delete dei contatti.
+
+Compatibilità retroattiva con file CSV originari (senza gruppi o compleanni).
+
+Nuovi campi:
+
+Gruppi definiti dall’utente (es. "Team", "Vendors", "Friends").
+
+Data di nascita opzionale.
+
+Visualizzazione per gruppo: elenco dei contatti filtrati per gruppo.
+
+Gestione gruppi: assegnare o modificare il gruppo di un contatto.
+
+Tracciamento compleanni:
+
+Visualizzare i compleanni in arrivo nel prossimo mese.
+
+Persistenza:
+
+Salvataggio e caricamento dei contatti (nuovo formato con campi estesi).
+
+Supporto ai vecchi file con completamento automatico (gruppo vuoto, nessun compleanno).
+
+📌 Requisiti Non Funzionali (NFR)
+Interfaccia console robusta e interattiva.
+
+Validazione di ogni campo incluso il formato data (YYYY-MM-DD).
+
+Struttura modulare e chiara.
+
+File header per prototipi e strutture.
+
+Uso di funzioni libere, malloc, free, get_next_line, ft_printf.
+
+🧱 HIGH-LEVEL STRUCTURE
+📁 File principali da progettare
+contact_manager.h → entry point e menu
+
+contact.h → struct Contact, funzioni CRUD
+
+group.h → gestione gruppi
+
+birthday.h → calcolo e ricerca compleanni
+
+file_io.h → caricamento e salvataggio CSV
+
+utils.h → validazioni e funzioni generiche
+

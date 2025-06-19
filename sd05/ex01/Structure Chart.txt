@@ -1,0 +1,15 @@
+                +------------------------+
+                |      main()           |
+                +------------------------+
+                           |
+     +----------+----------+------------+------------------+
+     |          |          |            |                  |
+load_file  interactive_menu()   save_file()       validate_input()
+                |
+        +-------+--------------+
+        |                      |
+  perform_action()      display_menu()
+        |
+  +-----+------------+
+  |     |     |      |
+add  edit  delete  summary

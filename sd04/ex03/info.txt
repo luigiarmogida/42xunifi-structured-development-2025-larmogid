@@ -1,0 +1,66 @@
+Input:
+
+CSV specificato da linea di comando
+
+Ogni riga = 6 campi:
+
+ID (intero positivo univoco)
+
+Title (stringa non vuota)
+
+Genre (stringa non vuota)
+
+Watched (0 o 1)
+
+Rating (1–10 se visto, altrimenti 0)
+
+Date Watched (YYYY-MM-DD se visto, altrimenti vuota)
+
+Validazione (per ogni riga):
+
+ID deve essere un intero positivo non duplicato
+
+Titolo e genere non vuoti
+
+Watched = 0 o 1
+
+Se Watched = 1:
+
+Rating ∈ [1,10]
+
+Data deve essere valida e plausibile
+
+Se Watched = 0:
+
+Rating o data = ignorati (ma warning se presenti)
+
+Riga non valida → warning su stderr, ma non crash
+
+Funzionalità interattive (menu):
+
+Lista film per ID crescente
+
+Ricerca per titolo o genere (substringa)
+
+Filtri per watched/unwatched
+
+Aggiunta nuovo film
+
+Marca film esistente come “visto”
+
+Aggiorna titolo o genere
+
+Cancella film (con conferma)
+
+Statistiche:
+
+Totale film
+
+Visti vs non visti
+
+Media rating visti
+
+Breakdown per genere
+
+Salva su file originale ed esci
+
