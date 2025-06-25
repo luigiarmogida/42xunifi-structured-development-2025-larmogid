@@ -1,0 +1,13 @@
+ExpenseTracker
+├── parse_expenses(file_name) -> ExpenseList
+│   ├── validate_line(line) -> bool
+│   └── parse_line(line) -> Expense
+├── prompt_user_filter() -> Filter
+│   └── validate_input(input) -> valid_value
+├── apply_filter(expenses, filter) -> ExpenseList
+├── compute_summary(filtered_expenses) -> Summary
+│   ├── compute_total_amount()
+│   ├── compute_average()
+│   └── compute_category_breakdown()
+├── print_summary(summary)
+└── cleanup()

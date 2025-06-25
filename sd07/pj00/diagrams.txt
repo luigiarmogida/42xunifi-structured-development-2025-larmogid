@@ -1,0 +1,54 @@
+
+      Context Diagram 
+
+       +-----------+
+       |   Utente  |
+       +-----------+
+             |
+   +---------------------------+
+   |      Movie Watchlist      |
+   +---------------------------+
+     |         |         |        |
+ [Input CSV] [Filtri] [Aggiunta] [Salvataggio]
+
+
+        Data Flow Diagram (DFD)
+
+            [File CSV]
+               |
+               v
+        +-----------------+
+        | Carica Watchlist |
+        +-----------------+
+               |
+               v
+        +--------------------+
+        | Elabora Operazioni |
+        +--------------------+
+               |
+               v
+       -------------------
+       |       |         |
+ [Filtro]  [CRUD]  [Salva File]
+
+
+       Structure Chart (moduli C)
+
+     main
+       │
+       ├── load_movies()
+       │    └── parse_csv_line()
+       │
+       ├── display_menu()
+       │
+       ├── handle_option()
+       │    ├── print_movies()
+       │    ├── filter_by_genre()
+       │    ├── add_movie()
+       │    ├── delete_movie()
+       │    └── save_movies()
+       │
+       └── free_movies()
+
+
+

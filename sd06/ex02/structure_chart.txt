@@ -1,0 +1,10 @@
+main
+ ├── load_contacts
+ ├── run_menu
+ │    ├── list_all_contacts
+ │    ├── search_contacts
+ │    ├── add_contact
+ │    ├── update_contact
+ │    ├── delete_contact
+ │    └── save_contacts
+ └── free_contact_list

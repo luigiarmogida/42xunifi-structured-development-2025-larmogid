@@ -1,0 +1,24 @@
+                  +------------------------+
+                  |     FILE LIBRI.CSV     |
+                  +-----------+------------+
+                              |
+                              v
+                       (1) Importa catalogo
+                              |
+                              v
+                        +-----------+
+                        | CATALOGO  |<----------------+
+                        |  LIBRI    |                 |
+                        +-----------+                 |
+                              |                       |
+         +--------------------+--------+              |
+         |                             |              |
+         v                             v              |
+(2) Visualizza/filtra           (3) Ricerca libri     |
+         |                             |              |
+         v                             v              |
+    [Output su console]          [Risultato ricerca]  |
+                                                    (4) Statistiche
+                                                        |
+                                                        v
+                                                [Output su console]

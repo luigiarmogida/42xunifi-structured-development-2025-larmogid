@@ -1,0 +1,109 @@
+✅ 1. Specifica dei Requisiti (Requirements Analysis)
+Requisiti funzionali:
+Leggere da file CSV righe con 4 (vecchio formato) o 5 (nuovo formato) campi.
+
+Validare e caricare in memoria spese corrette (max ~1000).
+
+Generare ID univoci per nuove spese.
+
+Menu interattivo per:
+
+Visualizzare tutte le spese ordinate per ID.
+
+Filtrare per categoria (substring) o intervallo di date.
+
+Aggiungere, modificare o rimuovere spese esistenti.
+
+Visualizzare statistiche (totale, media, breakdown per categoria).
+
+Validare tutti gli input utente.
+
+Salvare in output tutte le spese nel nuovo formato (5 campi con ID).
+
+Requisiti non funzionali:
+Interfaccia testuale chiara e responsiva.
+
+Codice organizzato secondo structured development.
+
+Uso di malloc/free, GNL, ft_printf (o equivalente), Libft.
+
+🧱 2. Struttura dati proposta (expense_tracker.h)
+c
+Copy
+Edit
+#define MAX_EXPENSES 1000
+#define MAX_LINE_LEN 512
+
+typedef struct {
+    int id;
+    char *date;        // es. "2025-06-22"
+    float amount;
+    char *category;
+    char *description;
+} Expense;
+
+typedef struct {
+    Expense records[MAX_EXPENSES];
+    int count;
+    int max_id;
+} ExpenseList;
+🧭 3. Diagramma dei moduli (Structure Chart)
+css
+Copy
+Edit
+main
+├── load_expenses_from_file
+│   └── parse_line
+├── run_interactive_menu
+│   ├── list_expenses
+│   ├── search_expenses_by_category
+│   ├── search_expenses_by_date_range
+│   ├── add_expense
+│   │   └── prompt_and_validate_input
+│   ├── edit_expense
+│   ├── delete_expense
+│   └── show_summary
+│       └── compute_statistics
+└── save_expenses_to_file
+🔄 4. Flusso di controllo (Control Flow - semplificato)
+txt
+Copy
+Edit
+start → open file → parse lines
+   → populate ExpenseList
+   → show menu
+      → [user chooses option]
+         → perform action (add, edit, list...)
+      → repeat
+   → on save+exit → write all expenses to file
+   → exit
+📌 5. Comportamenti chiave
+Parsing file:
+Righe con 4 campi → ID generato automaticamente (incrementando da max_id)
+
+Righe con 5 campi → accettate se ID > 0 e non duplicato
+
+Validazione:
+Data nel formato YYYY-MM-DD (possibile uso di sscanf)
+
+Amount positivo (strtof o parsing manuale)
+
+Categoria non vuota
+
+ID > 0 e unico (se fornito)
+
+🧪 6. Prototipi funzioni principali
+c
+Copy
+Edit
+int load_expenses_from_file(const char *filename, ExpenseList *list);
+int save_expenses_to_file(const char *filename, ExpenseList *list);
+
+void run_interactive_menu(ExpenseList *list);
+void list_expenses(ExpenseList *list);
+void add_expense(ExpenseList *list);
+void edit_expense(ExpenseList *list);
+void delete_expense(ExpenseList *list);
+void show_summary(ExpenseList *list);
+void search_by_category(ExpenseList *list);
+void search_by_date_range(ExpenseList *list);

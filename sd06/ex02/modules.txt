@@ -1,0 +1,36 @@
+PIANO DEI MODULI (a livello logico)
+1. File Input Module
+Apre e legge riga per riga
+
+Salta righe non valide (stampa warning)
+
+Chiama parse_contact() → validate_contact()
+
+2. Data Storage Module
+Lista dinamica di Contact
+
+Ricerca per ID, modifica, eliminazione
+
+Espansione automatica della capacità
+
+3. Search Module
+Ricerca parziale su name o city
+
+4. User Interface (Console Menu)
+Loop continuo con scelte:
+
+pgsql
+Copy
+Edit
+1. List All
+2. Search by Name
+3. Search by City
+4. Add
+5. Update
+6. Delete
+7. Save and Exit
+5. File Output Module
+Scrive i contatti validi
+
+Usa file temporaneo + rename()
+

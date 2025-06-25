@@ -1,0 +1,147 @@
+✅ 1. Requisiti Funzionali (Overview)
+
+Il programma:
+
+Legge un file CSV fornito via CLI;
+
+Valida e carica le righe corrette in memoria;
+
+Gestisce un menu interattivo per:
+
+Elencare, cercare, filtrare film;
+
+Aggiungere, modificare, segnare come visti, eliminare film;
+
+Visualizzare statistiche;
+
+Salvare e uscire.
+
+📐 2. Structured Analysis – Diagrammi e Componenti
+
+📁 File Header
+ 
+// movie.h
+typedef struct s_movie {
+    int id;
+    char *title;
+    char *genre;
+    int watched; // 0 or 1
+    int rating;  // 1-10 if watched, 0 otherwise
+    char *date;  // YYYY-MM-DD if watched, "" otherwise
+    struct s_movie *next;
+} t_movie;
+
+typedef struct s_movie_list {
+    t_movie *head;
+    int max_id;
+    int count;
+} t_movie_list;
+
+📊 Structure Chart (modulare)
+
+
++----------------------------+
+|        main()             |
++----------------------------+
+           |
++----------------------------+
+|       load_movies()       |<-- read_and_validate_line()
++----------------------------+
+           |
++----------------------------+
+|     interactive_menu()    |
++----------------------------+
+           |
+     +----------+----------+----------+---------+
+     |          |          |          |         |
+ list_movies()  search()  add_movie() ...   save_movies()
+
+🔎 3. Parsing e Validazione (core iniziale)
+
+Pseudocodice
+ 
+void load_movies(char *filename, t_movie_list *list);
+int parse_and_validate_line(char *line, t_movie_list *list);
+
+Per ogni riga del file:
+
+Divide in 6 campi;
+
+Rimuove spazi extra;
+
+Convalida ogni campo:
+
+ID > 0 e unico;
+
+title e genre non vuoti;
+
+watched = 0 o 1;
+
+rating valido solo se watched;
+
+data conforme solo se watched.
+
+🧭 4. Menu Interattivo (loop principale)
+ 
+void interactive_menu(t_movie_list *list, const char *filename);
+
+Ogni scelta richiede:
+
+Input utente valido (con controllo);
+
+Richiamo della funzione corrispondente:
+
+list_movies()
+
+search_movies_by_title_or_genre()
+
+filter_movies_by_watched_status()
+
+add_movie()
+
+mark_as_watched()
+
+update_movie()
+
+delete_movie()
+
+show_statistics()
+
+save_and_exit()
+
+📈 5. Statistiche
+ 
+void show_statistics(t_movie_list *list);
+
+Output esempio:
+
+Totale film;
+
+Film visti / non visti;
+
+Media voto;
+
+Breakdown per genere (visti/non visti).
+
+💾 6. Salvataggio
+ 
+void save_movies(char *filename, t_movie_list *list);
+
+Scrive tutti i record validi, ordinati per ID crescente;
+
+Sovrascrive il file originale.
+
+📂 Struttura dei File
+
+movie.h – strutture dati e prototipi
+
+parser.c – parsing e validazione
+
+menu.c – menu interattivo e operazioni
+
+stats.c – statistiche
+
+utils.c – funzioni di utilità (stringhe, input, trimming)
+
+main.c – punto di ingresso
+
